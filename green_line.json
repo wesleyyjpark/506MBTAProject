@@ -1,0 +1,50 @@
+{
+  "B": {
+    "direction_destinations": [
+      "Boston College",
+      "Government Center"
+    ],
+    "direction_names": ["West", "East"],
+    "long_name": "Green Line B",
+    "short_name": "B",
+    "links": {
+      "self": "/routes/Green-B"
+    }
+  },
+  "C": {
+    "direction_destinations": [
+      "Cleveland Circle",
+      "Government Center"
+    ],
+    "direction_names": ["West", "East"],
+    "long_name": "Green Line C",
+    "short_name": "C",
+    "links": {
+      "self": "/routes/Green-C"
+    }
+  },
+  "D": {
+    "direction_destinations": [
+      "Riverside",
+      "Union Square"
+    ],
+    "direction_names": ["West", "East"],
+    "long_name": "Green Line D",
+    "short_name": "D",
+    "links": {
+      "self": "/routes/Green-D"
+    }
+  },
+  "E": {
+    "direction_destinations": [
+      "Heath Street",
+      "Medford/Tufts"
+    ],
+    "direction_names": ["West", "East"],
+    "long_name": "Green Line E",
+    "short_name": "E",
+    "links": {
+      "self": "/routes/Green-E"
+    }
+  }
+}
