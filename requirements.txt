@@ -1,2 +1,5 @@
 dotenv
+matplotlib
+numpy
+pandas
 requests
