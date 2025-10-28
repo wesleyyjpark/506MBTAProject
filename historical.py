@@ -1,4 +1,25 @@
+import re
 import pandas as pd
+
+def process_reliability_data():
+    pattern = re.compile(r'(\d{4})/(\d{2})/(\d{2}).+')
+    df = pd.read_csv('./data/reliability_processed.csv')
+
+    # date format: 2024/05/27 04:00:00+00
+    def processor(value: str):
+        match = pattern.match(value)
+        if not match:
+            raise RuntimeError(f'Invalid value: {value}')
+
+        year, month, day = match.groups()
+        return f'{year}-{month}-{day}'
+
+    df['datetime'] = df['service_date'].map(processor)
+    avg_pct = df.groupby('datetime',as_index=False)['pct'].mean()
+    avg_pct.set_index('datetime', inplace=True)
+    avg_pct.to_csv('./data/reliability2.csv')
+
+
 
 def reliability():
     """Process the MBTA reliability data by extracting only the things we need
@@ -17,4 +38,4 @@ def reliability():
     df.to_csv('data/reliability_processed.csv', index=False)
 
 if __name__ == '__main__':
-    reliability()
+    process_reliability_data()
