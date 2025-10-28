@@ -15,10 +15,8 @@ def process_reliability_data():
         return f'{year}-{month}-{day}'
 
     df['datetime'] = df['service_date'].map(processor)
-    avg_pct = df.groupby('datetime',as_index=False)['pct'].mean()
-    avg_pct.set_index('datetime', inplace=True)
+    avg_pct = df.groupby('datetime')['pct'].mean()
     avg_pct.to_csv('./data/reliability2.csv')
-
 
 
 def reliability():
