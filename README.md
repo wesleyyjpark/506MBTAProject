@@ -1,5 +1,5 @@
 # 506MBTAProject
-## Project Repository for CS506
+## Project Repository for CS5066
 
 ### Project Description:
 Students at specific stops and times significantly contribute to MBTA train delays. We would like to predict surges in passenger volume on the MBTA Green Line to create a tool that students can use while commuting. 
@@ -9,7 +9,7 @@ Our goal is to identify to a high degree of accuracy, transit crowd hotspots in 
 ## Midterm Report 
 
 ### Youtube Link 
-[Midterm Report Video](youtube.com)
+[Midterm Report Video](https://youtu.be/MnIV4ef9FLM?si=AImOTgxgkv5k4gZe)
 
 ### Methods of data processing
 - Cleaned data from MBTA's OpenData ArcGis to gather the Day and percentage of reliability of the Green Line
@@ -38,14 +38,47 @@ determining student movement and if there is coorelation between class end times
 
 
 ### Data modeling methods
+- **Linear Regression Models**: 
+  - Single variable (precipitation only): R² = -0.0011 (essentially no predictive power)
+  - Multiple variables (precip, precipcover, snow, snowdepth): R² = 0.0368 (explains only ~3.7% of variance)
+  
+- **K-Means Clustering**: 
+  - Identified 4 distinct weather clusters (Clear, Rain, Snow, Snowpack)
+  - Identified 3 reliability clusters (Low, Medium, High)
+  - Cross-tabulated weather and reliability to find patterns
+  - **Key Finding**: Weather alone is a weak predictor of transit reliability
 
+- **Correlation Analysis**:
+  - Precipitation vs Reliability: r = -0.0308
+  - Snow vs Reliability: r = -0.1833
+  - Both correlations are very weak
 
 ### Data visualization methods
+- **Time Series Analysis**: Plotted reliability trends from 2016-2024, showing month-by-month and day-of-week patterns
+- **Scatter Plots**: Analyzed relationships between weather variables (precipitation, snow) and reliability
+- **Correlation Heatmap**: Visualized correlations between all weather variables and reliability
+- **Cluster Visualizations**: 
+  - 2D plots showing weather clusters (precipitation vs snow)
+  - Box plots comparing reliability distributions across clusters
+  - Heatmaps showing probability distributions
 
 
 ### Preliminary results
-- We were able to 
-(e.g. we fit a linear model to the data and we achieve promising results, or we did some clustering and we notice a clear pattern in the data)
+- **Weather is NOT the main driver of reliability**: Daily weather patterns explain only ~3.7% of reliability variation (R² = 0.0368)
+- **Clustering reveals 4 weather types**:
+  - Cluster 0 (Clear days): 83% of days, avg reliability = 79.8%
+  - Cluster 1 (Rainy days): 12% of days, avg reliability = 79.5%
+  - Cluster 2 (Heavy snow): 1.2% of days (38 days), avg reliability = 73.2%
+  - Cluster 3 (Deep snowpack): 3.7% of days, avg reliability = 78.1%
+- **Reliability distribution**: 
+  - High reliability (>84%): 36.9% of days
+  - Medium reliability (75-84%): 45.4% of days
+  - Low reliability (<75%): 17.7% of days
+- There is high variability in reliability (σ = 0.048), but weather alone cannot explain this variability. 
+
+### Next
+- Integrate class schedule data and more specific periods of time besides the day itself
+- Utilize the MBTA real-time API to gather crowdedness data and look at relationship between it and weather/schedules 
 
 ### Datasets
 - [Transit Reliability](https://mbta-massdot.opendata.arcgis.com/datasets/MassDOT::mbta-bus-commuter-rail-rapid-transit-reliability/about)
