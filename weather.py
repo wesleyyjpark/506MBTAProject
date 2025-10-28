@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 import requests
 
 def process_weather_data():
-    """Given the downloaded weather data, remove the columns we don't need
+    """Given the downloaded weather data, select only the columns we need
     """
     df = pd.read_csv('./data/weather.csv')
     df = df[['datetime', 'precip', 'precipcover', 'preciptype', 'snow', 'snowdepth']]

@@ -2,6 +2,9 @@ import re
 import pandas as pd
 
 def process_reliability_data():
+    """Reformat the date in the reliability data to be YYYY-MM-DD and compute
+    the average pct per day
+    """
     pattern = re.compile(r'(\d{4})/(\d{2})/(\d{2}).+')
     df = pd.read_csv('./data/reliability_processed.csv')
 
