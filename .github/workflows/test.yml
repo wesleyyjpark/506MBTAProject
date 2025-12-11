@@ -23,27 +23,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     
-    - name: Check data files exist
+    - name: Run pytest tests
       run: |
-        if [ ! -f "data/combined.csv" ]; then
-          echo "Warning: data/combined.csv not found"
-        else
-          echo "✓ Data file exists"
-        fi
-    
-    - name: Test data loading
-      run: |
-        python -c "import pandas as pd; df = pd.read_csv('data/combined.csv'); print(f'✓ Loaded {len(df)} rows')" || echo "Note: Run data processing first"
-    
-    - name: Test visualization imports
-      run: |
-        python -c "from visualization import create_crowding_heatmap_map; print('✓ Visualization module imports successfully')" || echo "Note: Visualization module may need data files"
-    
-    - name: Test class schedules
-      run: |
-        python -c "from class_schedules import STANDARD_PATTERNS; print(f'✓ Loaded {len(STANDARD_PATTERNS)} class patterns')"
-    
-    - name: Run basic tests
-      run: |
-        python -c "import pandas as pd; import numpy as np; import sklearn; print('✓ Core dependencies work')"
+        python -m pytest tests/ -v
 
