@@ -25,10 +25,11 @@ def test_data_processing_pipeline():
 
 def test_visualization_pipeline():
     """Test that visualizations can be created from data"""
-    if not os.path.exists('data/combined.csv'):
-        pytest.skip("Data file not found")
+    # Use with_alerts.csv which has all required columns
+    if not os.path.exists('data/with_alerts.csv'):
+        pytest.skip("Data file not found - run 'make data' first")
     
-    df = pd.read_csv('data/combined.csv')
+    df = pd.read_csv('data/with_alerts.csv')
     df['datetime'] = pd.to_datetime(df['datetime'])
     
     from visualization import create_pattern_insights_map
