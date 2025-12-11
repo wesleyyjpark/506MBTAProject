@@ -43,8 +43,8 @@ def download_data():
         "x-api-key": MBTA_API_KEY
     }
     
-    with open('trips.json', 'w') as file:
-        with requests.get(f'{MBTA_API_ADDR}/trips?filter[route]=Green-B', headers=headers) as req:
+    with open('output.json', 'w') as file:
+        with requests.get(f'{MBTA_API_ADDR}/stops?filter[route]=Green-B', headers=headers) as req:
             json.dump(req.json(), file, indent=2)
 
 if __name__ == '__main__':
