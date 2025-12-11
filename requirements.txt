@@ -6,3 +6,8 @@ requests
 scikit-learn
 seaborn
 jupyter
+xgboost
+plotly
+kaleido
+holidays
+pyarrow

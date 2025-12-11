@@ -1,3 +1,43 @@
 .venv
 __pycache__
 .env
+
+# Raw data files (too large for git, download via make data)
+data/reliability.csv
+data/weather.csv
+data/*.parquet
+data/lamp/
+
+# Include cleaned/processed data files (small enough for git)
+# These allow quick testing without full data pipeline
+!data/combined.csv
+!data/with_alerts.csv
+!data/with_advanced_features.csv
+!data/reliability_processed.csv
+!data/weather_processed.csv
+!data/reliability2.csv
+!data/with_lamp_weekly.csv
+!data/.gitkeep
+
+# Output files
+output/*.html
+output/*.png
+
+# Python cache
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache
+.coverage
+htmlcov/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
