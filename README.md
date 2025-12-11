@@ -4,6 +4,7 @@
 **CS 506 Final Project**
 
 Video: 
+https://youtu.be/BJXz8D5m6j4
 
 
 ## Project Overview
